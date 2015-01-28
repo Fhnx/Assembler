@@ -17,7 +17,9 @@ public class Assembler {
 		for (String string : args) {
 			System.out.println(string);
 		}
+		System.out.println("-----------------------");
 		int retStat = assignFilePaths(args);
+		System.out.println("-----------------------");
 		if (retStat == 0) {
 			Parser par = null;
 			try {
