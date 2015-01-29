@@ -23,29 +23,32 @@ public class Assembler {
 		if (retStat == 0) {
 			Parser par = null;
 			try {
-				par = new Parser(new FileInputStream(sourceFilePath), new FileOutputStream(destFilePath, false));
+				par = new Parser(new FileInputStream(sourceFilePath),
+						new FileOutputStream(destFilePath, false));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 				System.out.println("Error: Couldn't open Filestreams!");
 			}
-			if(par != null){
+			if (par != null) {
 				retStat = par.parse();
-				if(retStat == 0){
-					
-				}else{
-					System.out.println("Error: While parsing. Error-code: " + retStat);
+				if (retStat == 0) {
+
+				} else {
+					System.out.println("Error: While parsing. Error-code: "
+							+ retStat);
 				}
 			}
 		} else {
 			System.out.println("Canceled!");
 		}
+		System.out.println("FINISHED");
 		System.out.println("-----------------------");
 	}
 
 	private static int assignFilePaths(String[] args) {
 		int returnStatus = 0;
 
-		//Check number of arguments
+		// Check number of arguments
 		if (args.length == 0) {
 			System.out.println("Error: No inputs.");
 			returnStatus = 1;

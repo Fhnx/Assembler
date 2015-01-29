@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class SymbolTable {
 	private HashMap<String, Integer> symbols;
+	private int nextAutoRAMLocation;
 	
 	public SymbolTable() {
 		symbols = new HashMap<String, Integer>();
@@ -21,10 +22,17 @@ public class SymbolTable {
 		symbols.put("END",		22);
 		symbols.put("i",		16);
 		symbols.put("sum",		17);
+		nextAutoRAMLocation = 16;
 	}
 	
 	public void addSymbol(String key, int value){
 		symbols.put(key, value);
+	}
+	
+	public int addVariable(String key){
+		symbols.put(key, nextAutoRAMLocation);
+		nextAutoRAMLocation++;
+		return nextAutoRAMLocation - 1;
 	}
 	
 	public int getValue(String key){

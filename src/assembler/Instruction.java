@@ -5,10 +5,13 @@ public class Instruction {
 	private int lineNumber = 0;
 	private boolean isCInstruction = false;
 	private String[] codeParts = null;
-	
-	public Instruction() {}
-	
-	public Instruction(String code, int lineNumber, boolean isCInstruction, String[] codeParts) {
+	private String binaryCode = null;
+
+	public Instruction() {
+	}
+
+	public Instruction(String code, int lineNumber, boolean isCInstruction,
+			String[] codeParts) {
 		this.code = code;
 		this.lineNumber = lineNumber;
 		this.isCInstruction = isCInstruction;
@@ -46,6 +49,26 @@ public class Instruction {
 	public void setCodeParts(String[] codeParts) {
 		this.codeParts = codeParts;
 	}
-	
-	
+
+	public String getBinaryCode() {
+		return binaryCode;
+	}
+
+	public void setBinaryCode(String binaryCode) {
+		this.binaryCode = binaryCode;
+	}
+
+	public String toString() {
+		StringBuilder strBui = new StringBuilder();
+		if (isCInstruction) {
+			strBui.append("C-Instr(");
+		} else {
+			strBui.append("A-Instr(");
+		}
+		strBui.append(code).append("|").append(lineNumber).append("|")
+				.append(codeParts[0]).append("|").append(codeParts[1])
+				.append("|").append(codeParts[2]).append("|")
+				.append(binaryCode).append(")");
+		return strBui.toString();
+	}
 }
